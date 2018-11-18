@@ -1,33 +1,21 @@
 'use strict'
 
 const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
-const INVALID_LOGIN = 'Ошибка! Логин должен быть от 4 до 16 символов'
+const INVALID_LOGIN = 'Ошибка! Логин должен быть от 4 до 16 символов';
 const VALID_LOGIN = 'Логин успешно добавлен!';
 const FALSE_LOGIN = 'Такой логин уже используется!';
 
 
-const isLoginValid = function(login) {
-  if (login.length < 4 || login.length > 16){
-    return false;
-  }else {
-    return true;
-  }
-};
+const isLoginValid = (login) => (login.length < 4 || login.length > 16)
 
-const isLoginUnique = function(allLogins, login) {
-  if(allLogins.includes(login)){
-    return false;
-  }else {
-    return true;
-  }
-};
+const isLoginUnique = (allLogins, login) => (allLogins.includes(login))
 
 const addLogin = function(allLogins, login) {
-  if(!isLoginValid(login)){
-    return 'Ошибка! Логин должен быть от 4 до 16 символов';
+  if(isLoginValid(login)){
+    return INVALID_LOGIN;
   }
 
-  if(!isLoginUnique(allLogins, login)){
+  if(isLoginUnique(allLogins, login)){
     return FALSE_LOGIN;
   }
 
